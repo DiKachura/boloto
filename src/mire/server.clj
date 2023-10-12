@@ -20,9 +20,9 @@
         (flush)
         (recur (read-line)))
     name))
-(def config
-  {:player player/player
-   :enemy player/troll})
+;(def config
+;  {:player player/player
+;   :enemy player/troll})
 (defn- mire-handle-client [in out]
   (binding [*in* (io/reader in)
             *out* (io/writer out)
@@ -40,7 +40,8 @@
 
       (println "create-character: " (player/create-character player/*name* 10))
 
-      (player/game-logic config)
+      ;;(player/game-logic config)
+
 
       (println (commands/look)) (print player/prompt) (flush)
 
@@ -58,4 +59,4 @@
      (defonce server (socket/create-server (Integer. port) mire-handle-client))
      (println "Launching Mire server on port" port))
   ([port] (-main port "resources/rooms"))
-  ([] (-main 3333)))
+  ([] (-main 3332)))

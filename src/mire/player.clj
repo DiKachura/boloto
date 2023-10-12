@@ -97,3 +97,4 @@
 
 (defn carrying? [thing]
   (some #{(keyword thing)} @*inventory*))
+

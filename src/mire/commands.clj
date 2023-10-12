@@ -19,6 +19,10 @@
        (str/join "\n" (map #(str "There is " % " here.\n")
                            @(:items @player/*current-room*)))))
 
+
+(def config
+  {:player player/player
+   :enemy player/troll})
 (defn move
   "\"♬ We gotta get out of this place... ♪\" Give a direction."
   [direction]
@@ -31,6 +35,7 @@
                             (:inhabitants @player/*current-room*)
                             (:inhabitants target))
          (ref-set player/*current-room* target)
+         (player/game-logic config)
          (look))
        "You can't go that way."))))
 
@@ -115,3 +120,14 @@
        (catch Exception e
          (.printStackTrace e (new java.io.PrintWriter *err*))
          "You can't do that!")))
+
+
+(defn fight-troll []
+  (let [kitchen-room (@rooms/rooms :kitchen)
+        troll-character player/troll]
+    (dosync
+      (alter player/*current-room* (constantly kitchen-room))
+      (alter player/*inventory* conj troll-character)
+      (alter (:inhabitants kitchen-room) conj (:name troll-character)))
+    (str "You have entered the kitchen and encountered a troll!\n"
+         "Prepare for battle!\n")))

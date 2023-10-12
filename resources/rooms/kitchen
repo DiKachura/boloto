@@ -1,3 +1,4 @@
-{:desc "You find yourself in a room with rount table in the middle."
+{:desc "You find yourself in a room with a round table in the middle."
  :exits {:west :promenade :east :hallway}
- :items #{:keys}}
+ :items #{:keys}
+ :monster :troll}
