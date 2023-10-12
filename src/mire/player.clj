@@ -56,13 +56,13 @@
 
 
 
-(def player (create-character "di" 6))
+(def player (create-character "you" 6))
 (def troll (create-character "troll" 4))
 
 
 
 (def log-template
-  "Character %s received %d damage.
+  " %s received %d damage.
   his new life is %d")
 
 (defn print-battle-log
@@ -76,7 +76,7 @@
   [p-hp e-hp]
   (if (<= p-hp 0)
     (println "Enemy won...")
-    (println "Player won!!!")))
+    (println "You won!!!")))
 
 (defn game-logic
   [config]
