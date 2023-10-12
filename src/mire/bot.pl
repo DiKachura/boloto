@@ -65,6 +65,6 @@ loop(Stream) :-
 % Основной предикат, который устанавливает соединение, запускает обработку и затем закрывает соединение.
 main :-
   setup_call_cleanup(
-    tcp_connect(localhost:3333, Stream, []),
+    tcp_connect(localhost:3332, Stream, []),
     run(Stream),
     close(Stream)).
