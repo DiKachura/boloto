@@ -82,4 +82,4 @@ Clojure](https://www.pluralsight.com/courses/functional-programming-clojure ).
       (<= rd s) (int (/ base 2))
       (> rd s) base
       (= rd sides) (* base 2))))
-      ```
+```
